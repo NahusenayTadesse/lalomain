@@ -1,0 +1,314 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+@import 'shadcn-svelte/tailwind.css';
+@import '@fontsource-variable/manrope';
+@import '@fontsource-variable/playfair-display';
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+	/*
+	 * Fixed brand chrome — the Lalo navy/terracotta identity used for the
+	 * header utility bar, hero, footer, and other "always on-brand" surfaces.
+	 * Unlike --primary/--secondary these never swap between light and dark.
+	 */
+	--brand-navy: oklch(0.271 0.039 241.275); /* navy-900 #142938 */
+	--brand-navy-foreground: oklch(1 0 0);
+	--brand-terracotta: oklch(0.7 0.078 39.512); /* terracotta-500 #C98E7A */
+	--brand-terracotta-foreground: oklch(1 0 0);
+
+	/* Lalo brand palette — navy #142938, terracotta #C98E7A, cream #F5E8DF */
+	--background: oklch(0.976 0.009 67.725); /* cream-50 #FBF6F1 */
+	--foreground: oklch(0.271 0.039 241.275); /* navy-900 #142938 */
+	--card: oklch(1 0 0);
+	--card-foreground: oklch(0.271 0.039 241.275); /* navy-900 */
+	--popover: oklch(1 0 0);
+	--popover-foreground: oklch(0.271 0.039 241.275); /* navy-900 */
+	--primary: oklch(0.271 0.039 241.275); /* navy-900 */
+	--primary-foreground: oklch(1 0 0);
+	--secondary: oklch(0.7 0.078 39.512); /* terracotta-500 #C98E7A */
+	--secondary-foreground: oklch(1 0 0);
+	--muted: oklch(0.939 0.019 57.211); /* cream-100 #F5E8DF */
+	--muted-foreground: oklch(0.356 0.043 233.166); /* navy-700 #24404F */
+	--accent: oklch(0.939 0.019 57.211); /* cream-100 #F5E8DF */
+	--accent-foreground: oklch(0.271 0.039 241.275); /* navy-900 */
+	--destructive: oklch(0.577 0.245 27.325);
+	--border: oklch(0.928 0.006 264.531); /* #E5E7EB */
+	--input: oklch(0.928 0.006 264.531);
+	--ring: oklch(0.7 0.078 39.512); /* terracotta-500 */
+	--chart-1: oklch(0.7 0.078 39.512); /* terracotta-500 */
+	--chart-2: oklch(0.778 0.057 39.241); /* terracotta-400 */
+	--chart-3: oklch(0.356 0.043 233.166); /* navy-700 */
+	--chart-4: oklch(0.29 0.035 238.174); /* navy-800 */
+	--chart-5: oklch(0.271 0.039 241.275); /* navy-900 */
+	--radius: 0rem;
+	--sidebar: oklch(0.271 0.039 241.275); /* navy-900 */
+	--sidebar-foreground: oklch(1 0 0);
+	--sidebar-primary: oklch(0.7 0.078 39.512); /* terracotta-500 */
+	--sidebar-primary-foreground: oklch(1 0 0);
+	--sidebar-accent: oklch(0.356 0.043 233.166); /* navy-700 */
+	--sidebar-accent-foreground: oklch(1 0 0);
+	--sidebar-border: oklch(1 0 0 / 10%);
+	--sidebar-ring: oklch(0.7 0.078 39.512); /* terracotta-500 */
+}
+
+.dark {
+	--background: oklch(0.215 0.028 240.844); /* navy-950 #0D1B25 */
+	--foreground: oklch(0.976 0.009 67.725); /* cream-50 */
+	--card: oklch(0.271 0.039 241.275); /* navy-900 */
+	--card-foreground: oklch(0.976 0.009 67.725); /* cream-50 */
+	--popover: oklch(0.271 0.039 241.275); /* navy-900 */
+	--popover-foreground: oklch(0.976 0.009 67.725); /* cream-50 */
+	--primary: oklch(0.7 0.078 39.512); /* terracotta-500 */
+	--primary-foreground: oklch(0.215 0.028 240.844); /* navy-950 */
+	--secondary: oklch(0.356 0.043 233.166); /* navy-700 */
+	--secondary-foreground: oklch(0.976 0.009 67.725); /* cream-50 */
+	--muted: oklch(0.29 0.035 238.174); /* navy-800 */
+	--muted-foreground: oklch(0.778 0.057 39.241); /* terracotta-400 */
+	--accent: oklch(0.356 0.043 233.166); /* navy-700 */
+	--accent-foreground: oklch(0.976 0.009 67.725); /* cream-50 */
+	--destructive: oklch(0.704 0.191 22.216);
+	--border: oklch(1 0 0 / 10%);
+	--input: oklch(1 0 0 / 15%);
+	--ring: oklch(0.7 0.078 39.512); /* terracotta-500 */
+	--chart-1: oklch(0.7 0.078 39.512); /* terracotta-500 */
+	--chart-2: oklch(0.778 0.057 39.241); /* terracotta-400 */
+	--chart-3: oklch(0.939 0.019 57.211); /* cream-100 */
+	--chart-4: oklch(0.633 0.078 40.126); /* terracotta-600 */
+	--chart-5: oklch(0.976 0.009 67.725); /* cream-50 */
+	--sidebar: oklch(0.215 0.028 240.844); /* navy-950 */
+	--sidebar-foreground: oklch(0.976 0.009 67.725); /* cream-50 */
+	--sidebar-primary: oklch(0.7 0.078 39.512); /* terracotta-500 */
+	--sidebar-primary-foreground: oklch(0.215 0.028 240.844); /* navy-950 */
+	--sidebar-accent: oklch(0.356 0.043 233.166); /* navy-700 */
+	--sidebar-accent-foreground: oklch(0.976 0.009 67.725); /* cream-50 */
+	--sidebar-border: oklch(1 0 0 / 10%);
+	--sidebar-ring: oklch(0.7 0.078 39.512); /* terracotta-500 */
+}
+
+@theme inline {
+	--font-sans: 'Manrope Variable', sans-serif;
+	--font-heading: 'Playfair Display Variable', serif;
+	--ease-premium: cubic-bezier(0.16, 1, 0.3, 1);
+	--ease-soft: cubic-bezier(0.22, 0.61, 0.36, 1);
+	--color-brand-navy: var(--brand-navy);
+	--color-brand-navy-foreground: var(--brand-navy-foreground);
+	--color-brand-terracotta: var(--brand-terracotta);
+	--color-brand-terracotta-foreground: var(--brand-terracotta-foreground);
+	--color-sidebar-ring: var(--sidebar-ring);
+	--color-sidebar-border: var(--sidebar-border);
+	--color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+	--color-sidebar-accent: var(--sidebar-accent);
+	--color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+	--color-sidebar-primary: var(--sidebar-primary);
+	--color-sidebar-foreground: var(--sidebar-foreground);
+	--color-sidebar: var(--sidebar);
+	--color-chart-5: var(--chart-5);
+	--color-chart-4: var(--chart-4);
+	--color-chart-3: var(--chart-3);
+	--color-chart-2: var(--chart-2);
+	--color-chart-1: var(--chart-1);
+	--color-ring: var(--ring);
+	--color-input: var(--input);
+	--color-border: var(--border);
+	--color-destructive: var(--destructive);
+	--color-accent-foreground: var(--accent-foreground);
+	--color-accent: var(--accent);
+	--color-muted-foreground: var(--muted-foreground);
+	--color-muted: var(--muted);
+	--color-secondary-foreground: var(--secondary-foreground);
+	--color-secondary: var(--secondary);
+	--color-primary-foreground: var(--primary-foreground);
+	--color-primary: var(--primary);
+	--color-popover-foreground: var(--popover-foreground);
+	--color-popover: var(--popover);
+	--color-card-foreground: var(--card-foreground);
+	--color-card: var(--card);
+	--color-foreground: var(--foreground);
+	--color-background: var(--background);
+	--radius-sm: calc(var(--radius) * 0.6);
+	--radius-md: calc(var(--radius) * 0.8);
+	--radius-lg: var(--radius);
+	--radius-xl: calc(var(--radius) * 1.4);
+	--radius-2xl: calc(var(--radius) * 1.8);
+	--radius-3xl: calc(var(--radius) * 2.2);
+	--radius-4xl: calc(var(--radius) * 2.6);
+}
+
+@layer base {
+	* {
+		@apply border-border outline-ring/50;
+	}
+	body {
+		@apply bg-background text-foreground;
+	}
+	html {
+		@apply font-sans;
+	}
+}
+
+/* ---------------------------------------------------------------------------
+   Motion system
+   - `use:reveal` (scroll-triggered) drives [data-reveal].
+   - `.enter-*` classes fire on mount, for above-the-fold content that must not
+     wait on an observer.
+   Everything below collapses to a plain fade under prefers-reduced-motion.
+--------------------------------------------------------------------------- */
+
+@layer components {
+	[data-reveal] {
+		transition:
+			opacity var(--reveal-duration, 900ms) var(--ease-premium) var(--reveal-delay, 0ms),
+			transform var(--reveal-duration, 900ms) var(--ease-premium) var(--reveal-delay, 0ms),
+			filter var(--reveal-duration, 900ms) var(--ease-premium) var(--reveal-delay, 0ms);
+	}
+
+	[data-reveal='out'] {
+		opacity: 0;
+		transform: translate3d(var(--reveal-x, 0px), var(--reveal-y, 24px), 0)
+			scale(var(--reveal-scale, 1));
+		filter: blur(var(--reveal-blur, 0px));
+	}
+
+	[data-reveal='in'] {
+		opacity: 1;
+		transform: none;
+		filter: none;
+	}
+
+	/* Mount-time entrances. `both` holds the from-state during the delay. */
+	.enter-up,
+	.enter-down,
+	.enter-fade,
+	.enter-rise {
+		animation-duration: var(--enter-duration, 1000ms);
+		animation-delay: var(--enter-delay, 0ms);
+		animation-timing-function: var(--ease-premium);
+		animation-fill-mode: both;
+	}
+
+	.enter-up {
+		animation-name: enter-up;
+	}
+	.enter-down {
+		animation-name: enter-down;
+	}
+	.enter-fade {
+		animation-name: enter-fade;
+	}
+	/* A longer, softer lift with a whisper of blur — for hero headlines. */
+	.enter-rise {
+		animation-name: enter-rise;
+		--enter-duration: 1200ms;
+	}
+
+	/* Slow settle on hero background imagery. */
+	.enter-kenburns {
+		animation: enter-kenburns 1800ms var(--ease-soft) both;
+	}
+
+	/* Hairline that draws itself in under a heading, on scroll. Pair with use:reveal. */
+	.reveal-rule {
+		transform-origin: left center;
+	}
+	.reveal-rule[data-reveal='out'] {
+		opacity: 0;
+		transform: scaleX(0);
+	}
+
+	/* Shared hover feel for cards and tiles. */
+	.lift {
+		transition:
+			transform 500ms var(--ease-premium),
+			box-shadow 500ms var(--ease-premium),
+			border-color 500ms var(--ease-premium);
+	}
+	.lift:hover {
+		transform: translateY(-4px);
+	}
+}
+
+@keyframes enter-up {
+	from {
+		opacity: 0;
+		transform: translate3d(0, 28px, 0);
+	}
+	to {
+		opacity: 1;
+		transform: none;
+	}
+}
+
+@keyframes enter-down {
+	from {
+		opacity: 0;
+		transform: translate3d(0, -20px, 0);
+	}
+	to {
+		opacity: 1;
+		transform: none;
+	}
+}
+
+@keyframes enter-fade {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
+@keyframes enter-rise {
+	from {
+		opacity: 0;
+		transform: translate3d(0, 40px, 0) scale(0.985);
+		filter: blur(6px);
+	}
+	to {
+		opacity: 1;
+		transform: none;
+		filter: blur(0);
+	}
+}
+
+@keyframes enter-kenburns {
+	from {
+		opacity: 0;
+		transform: scale(1.09);
+	}
+	to {
+		opacity: 1;
+		transform: scale(1);
+	}
+}
+
+/* Without JS the observer never runs, so nothing may stay hidden. */
+@media (scripting: none) {
+	[data-reveal] {
+		opacity: 1 !important;
+		transform: none !important;
+		filter: none !important;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	[data-reveal='out'] {
+		opacity: 0;
+		transform: none;
+		filter: none;
+	}
+
+	.enter-up,
+	.enter-down,
+	.enter-fade,
+	.enter-rise,
+	.enter-kenburns {
+		animation-name: enter-fade;
+		animation-duration: 400ms;
+	}
+
+	.lift:hover {
+		transform: none;
+	}
+}
