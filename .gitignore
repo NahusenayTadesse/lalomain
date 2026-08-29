@@ -25,3 +25,8 @@ vite.config.ts.timestamp-*
 
 # Uploaded files (FILES_DIR)
 .tempFiles
+/build
+build/
+build.zip
+build*.tar.gz
+build*.zip

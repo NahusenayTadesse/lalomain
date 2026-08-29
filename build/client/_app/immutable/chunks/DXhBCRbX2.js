@@ -1,1 +1,0 @@
-var e=e=>e?e.startsWith(`http`)?e:`/files/${e}`:``;export{e as t};
